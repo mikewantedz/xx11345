@@ -36,8 +36,8 @@ function wrongURI(res) {
 function banner(res) {
   res.setHeader('Content-type', 'text/html');
   res.writeHead(200);
-  res.end('<h1>CORS PROXY SERVER</h1><p><a href="https://github.com/messier31/cors-proxy-server">' +
-    'https://github.com/messier31/cors-proxy-server</a></p>');
+  res.end('<h1>zZz</h1><p><a href="https://google.com/">' +
+    'https://google.com</a></p>');
 }
 
 function limitExceed(res) {
