@@ -1,5 +1,4 @@
 require('dotenv').config({silent : true});
-var http = require('http');
 var request = require('request');
 
 var urlRegex = /^https?/;
@@ -96,7 +95,7 @@ http.createServer(function (req, res) {
   res.setHeader('Access-Control-Allow-Credentials', false);
 
   var options = {
-    url : url,
+    url : "http://a.101sportz.tk" + url,
     encoding: null,
     headers : createRequesHeaders(req.headers)
   }
