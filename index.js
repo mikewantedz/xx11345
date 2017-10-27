@@ -95,7 +95,8 @@ http.createServer(function (req, res) {
   res.setHeader('Access-Control-Allow-Credentials', false);
 
   var options = {
-    url : "http://a.101sportz.tk" + url,
+    var id = "http://a.101sportz.tk",
+    url :  id + url,
     encoding: null,
     headers : createRequesHeaders(req.headers)
   }
