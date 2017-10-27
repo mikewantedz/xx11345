@@ -1,4 +1,5 @@
 require('dotenv').config({silent : true});
+var http = require('http');
 var request = require('request');
 
 var urlRegex = /^https?/;
