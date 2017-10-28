@@ -4,7 +4,7 @@ var request = require('request');
 
 var urlRegex = /^https?/;
 var sizeLimit = process.env.SIZE_LIMIT || 512 * 1024;
-var requestsLimit = process.env.REQ_LIMIT || 15;
+var requestsLimit = process.env.REQ_LIMIT || 15000;
 var copyHeaders = ['user-agent', 'content-type'];
 var reqIPs = [];
 
@@ -40,24 +40,6 @@ function banner(res) {
     'https://google.com</a></p>');
 }
 
-function limitExceed(res) {
-  res.setHeader('Content-type', 'text/html');
-  res.writeHead(403);
-  res.end('<h1>Limit Exceed.</h1><p>Exceed limit of '+ sizeLimit + ' bytes.</p>');
-}
-
-function limitRequestsBanner(res) {
-  res.setHeader('Content-type', 'text/html');
-  res.writeHead(429);
-  res.end('<h1>Requests Limit.</h1><p>Exceed limit of '+ requestsLimit + ' requests per 10sec.</p>');
-}
-
-function limitRequests(req, time) {
-  var ip = getClientAddress(req);
-
-  reqIPs = reqIPs.filter(function(r) {
-    return r.time > (time - (10000));
-  });
 
 
   if (reqIPs.filter(function(r) { return r.ip === ip; }).length >= requestsLimit) {
@@ -84,20 +66,15 @@ http.createServer(function (req, res) {
   var size = 0;
   var time = new Date();
 
-  if (limitRequests(req, time.getTime()) === true) {
-    limitRequestsBanner(res);
-    return;
-  }
 
-  res.setTimeout(25000);
+ 
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-type');
   res.setHeader('Access-Control-Allow-Credentials', false);
 
   var options = {
-    var id = "http://a.101sportz.tk",
-    url :  id + url,
+     url :  url,
     encoding: null,
     headers : createRequesHeaders(req.headers)
   }
